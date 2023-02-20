@@ -477,6 +477,12 @@ foreign import ccall unsafe "Z3_mk_datatype"
                    -> Ptr (Ptr Z3_constructor)
                    -> IO (Ptr Z3_sort)
 
+-- | Reference: <https://z3prover.github.io/api/html/group__capi.html#ga62f28c83854dcfc095506ef62e082c25>
+foreign import ccall unsafe "Z3_mk_datatype_sort"
+    z3_mk_datatype_sort :: Ptr Z3_context
+                        -> Ptr Z3_symbol
+                        -> IO (Ptr Z3_sort)
+
 -- | Reference <http://z3prover.github.io/api/html/group__capi.html#gac9305d5d4eb1ce68d17300f5af19fafd>
 foreign import ccall unsafe "Z3_mk_constructor_list"
     z3_mk_constructor_list :: Ptr Z3_context

@@ -67,6 +67,7 @@ module Z3.Monad
   , mkTupleSort
   , mkConstructor
   , mkDatatype
+  , mkDatatypeSort
   , mkDatatypes
   , mkSetSort
 
@@ -916,6 +917,11 @@ mkDatatype :: MonadZ3 z3
            -> [Constructor]
            -> z3 Sort
 mkDatatype = liftFun2 Base.mkDatatype
+
+mkDatatypeSort :: MonadZ3 z3
+               => Symbol
+               -> z3 Sort
+mkDatatypeSort = liftFun1 Base.mkDatatypeSort
 
 -- | Create mutually recursive datatypes, such as a tree and forest.
 --

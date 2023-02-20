@@ -146,6 +146,7 @@ module Z3.Base (
   , mkListSort
   , mkConstructor
   , mkDatatype
+  , mkDatatypeSort
   , mkDatatypes
   , mkSetSort
 
@@ -1199,6 +1200,11 @@ mkDatatype :: Context
            -> IO Sort
 mkDatatype c sym consList = marshalArrayLen consList $ \ n consPtrs -> do
   toHsCheckError c $ \cPtr -> z3_mk_datatype cPtr (unSymbol sym) n consPtrs
+
+mkDatatypeSort :: Context
+               -> Symbol
+               -> IO Sort
+mkDatatypeSort = liftFun1 z3_mk_datatype_sort
 
 -- | Create list of constructors
 mkConstructorList :: Context                      -- ^ Context
